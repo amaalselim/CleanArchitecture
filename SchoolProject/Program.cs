@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
+using SchoolProject.Infrastructure.Abstracts;
 using SchoolProject.Infrastructure.Data;
+using SchoolProject.Infrastructure.Repositories;
 
 namespace SchoolProject
 {
@@ -20,6 +22,8 @@ namespace SchoolProject
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddTransient<IStudentRepository,StudentRepository>(); 
 
             var app = builder.Build();
 
