@@ -3,6 +3,7 @@ using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Abstracts;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure.Repositories;
+using SchoolProject.Service;
 
 namespace SchoolProject
 {
@@ -23,7 +24,12 @@ namespace SchoolProject
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            builder.Services.AddInfrastructureDependencies();
+            #region Dependency Injection
+
+            builder.Services.AddInfrastructureDependencies()
+                            .AddServiceDependencies();
+            #endregion
+
 
             var app = builder.Build();
 
