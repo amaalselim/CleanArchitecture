@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using SchoolProject.Core;
 using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Abstracts;
 using SchoolProject.Infrastructure.Data;
@@ -27,7 +28,8 @@ namespace SchoolProject
             #region Dependency Injection
 
             builder.Services.AddInfrastructureDependencies()
-                            .AddServiceDependencies();
+                            .AddServiceDependencies()
+                            .AddCoreDependecies();
             #endregion
 
 
