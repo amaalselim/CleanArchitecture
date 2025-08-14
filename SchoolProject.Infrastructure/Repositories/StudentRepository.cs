@@ -31,8 +31,10 @@ namespace SchoolProject.Infrastructure.Repositories
                 .Include(d=>d.Department)
                 .ToListAsync();
         }
-        #endregion
 
         
+        #endregion
+
+
     }
 }
