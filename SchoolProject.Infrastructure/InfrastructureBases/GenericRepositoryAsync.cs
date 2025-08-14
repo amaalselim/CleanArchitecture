@@ -33,7 +33,6 @@ namespace SchoolProject.Infrastructure.InfrastructureBases
         #region Actions
         public virtual async Task<T> GetByIdAsync(int id)
         {
-
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
