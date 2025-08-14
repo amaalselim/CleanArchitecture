@@ -25,6 +25,7 @@ namespace SchoolProject.Service.Implementations
 
         public async Task<Student> GetStudentByIdAsync(int id)
         {
+            // faster than list =>(iqueryable)
             var student = await _studentRepository.GetTableNoTracking()
                 .Include(d=>d.Department).Where(x=>x.StudID.Equals(id))
                 .FirstOrDefaultAsync();
