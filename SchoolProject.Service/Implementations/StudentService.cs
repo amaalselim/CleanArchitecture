@@ -18,6 +18,12 @@ namespace SchoolProject.Service.Implementations
         {
             _studentRepository = studentRepository;
         }
+
+        public Task<string> AddAsync(Student student)
+        {
+            // Check if name exists or not
+        }
+
         public async Task<List<Student>> GetAllStudentsAsync()
         {
             return await _studentRepository.GetAllStudentsAsync();  
