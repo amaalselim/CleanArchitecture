@@ -30,7 +30,10 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         #region handle Functions
         public Task<Response<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
-            
+            //Mapping between request and student
+            //add
+            //check condition
+            //return response
         }
         #endregion
     }
