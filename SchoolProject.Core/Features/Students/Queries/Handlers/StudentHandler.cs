@@ -17,14 +17,20 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
                                 IRequestHandler<GetStudentListQuery, Response<List<GetStudentListResponse>>>,
                                 IRequestHandler<GetStudentByIdQuery, Response<GetSingleStudentResponse>>
     {
+        #region Fields
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
+        #endregion
 
+        #region Constructors
         public StudentHandler(IStudentService studentService,IMapper mapper)
         {
             _studentService = studentService;
             _mapper = mapper;
         }
+        #endregion
+
+
         public async Task<Response<List<GetStudentListResponse>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
         {
             var studentList= await _studentService.GetAllStudentsAsync();
