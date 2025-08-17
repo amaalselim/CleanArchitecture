@@ -22,6 +22,8 @@ namespace SchoolProject.Service.Implementations
         public Task<string> AddAsync(Student student)
         {
             // Check if name exists or not
+
+            //add student
         }
 
         public async Task<List<Student>> GetAllStudentsAsync()
