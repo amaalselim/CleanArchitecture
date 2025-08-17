@@ -19,10 +19,13 @@ namespace SchoolProject.Service.Implementations
             _studentRepository = studentRepository;
         }
 
-        public Task<string> AddAsync(Student student)
+        public async Task<string> AddAsync(Student student)
         {
             // Check if name exists or not
-
+            var studentresult= await _studentRepository.GetTableNoTracking()
+                .Where(x => x.Name.Equals(student.Name))
+                .FirstOrDefaultAsync();
+            if (studentresult != null) return "Exist";
             //add student
         }
 
