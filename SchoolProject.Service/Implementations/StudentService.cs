@@ -26,7 +26,9 @@ namespace SchoolProject.Service.Implementations
                 .Where(x => x.Name.Equals(student.Name))
                 .FirstOrDefaultAsync();
             if (studentresult != null) return "Exist";
-            //add student
+            //added student
+            await _studentRepository.AddAsync(student);
+            return "Success";
         }
 
         public async Task<List<Student>> GetAllStudentsAsync()
