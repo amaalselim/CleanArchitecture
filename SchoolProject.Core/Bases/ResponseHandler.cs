@@ -53,6 +53,16 @@ namespace SchoolProject.Core.Bases
             };
         }
 
+        public Response<T> UnProcessableEntity<T>(string Message = null)
+        {
+            return new Response<T>()
+            {
+                StatusCode = System.Net.HttpStatusCode.UnprocessableEntity,
+                Succeeded = false,
+                Message = Message == null ? "UnProcessableEntity" : Message
+            };
+        }
+
         public Response<T> NotFound<T>(string message = null)
         {
             return new Response<T>()
