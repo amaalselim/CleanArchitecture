@@ -30,7 +30,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
         }
         #endregion
 
-
+        #region Handles Functions
         public async Task<Response<List<GetStudentListResponse>>> Handle(GetStudentListQuery request, CancellationToken cancellationToken)
         {
             var studentList= await _studentService.GetAllStudentsAsync();
@@ -45,5 +45,6 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
             var result = _mapper.Map<GetSingleStudentResponse>(student);
             return Success(result);
         }
+        #endregion
     }
 }
