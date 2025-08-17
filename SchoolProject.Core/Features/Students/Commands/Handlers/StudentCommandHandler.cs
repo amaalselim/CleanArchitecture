@@ -2,6 +2,7 @@
 using MediatR;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Students.Commands.Models;
+using SchoolProject.Data.Entities;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -28,12 +29,23 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         #endregion
 
         #region handle Functions
-        public Task<Response<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
+        public async Task<Response<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
             //Mapping between request and student
+            var studentmapper=_mapper.Map<Student>(request);
             //add
+            var result=await _studentService.AddAsync(studentmapper);
             //check condition
+            if (result.Equals("Exist"))
+            {
+                return UnProcessableEntity<string>("Student with this name already exists");
+            }
+            else if (result.Equals("Success"))
+            {
+                return Created<string>("Added Successfully");
+            }
             //return response
+            else return BadRequest<string>("Something went wrong, please try again later");
         }
         #endregion
     }
