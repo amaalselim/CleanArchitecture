@@ -24,9 +24,9 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
                 .MaximumLength(00).WithMessage("Name cannot exceed 10 characters");
 
             RuleFor(x => x.Address)
-                .NotEmpty().WithMessage("{Property Name} Must Not Be Empty")
-                .NotNull().WithMessage("{Property Value} Must Not Be Null")
-                .MaximumLength(00).WithMessage("{Property Name} cannot exceed 10 characters");
+                .NotEmpty().WithMessage("{PropertyName} Must Not Be Empty")
+                .NotNull().WithMessage("{PropertyValue} Must Not Be Null")
+                .MaximumLength(00).WithMessage("{PropertyName} cannot exceed 10 characters");
 
 
         }
