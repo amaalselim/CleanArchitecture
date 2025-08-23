@@ -4,11 +4,6 @@ using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Students.Commands.Models;
 using SchoolProject.Data.Entities;
 using SchoolProject.Service.Abstracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchoolProject.Core.Features.Students.Commands.Handlers
 {
@@ -21,7 +16,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         #endregion
 
         #region Constructor
-        public StudentCommandHandler(IStudentService studentService,IMapper mapper)
+        public StudentCommandHandler(IStudentService studentService, IMapper mapper)
         {
             _studentService = studentService;
             _mapper = mapper;
@@ -32,9 +27,9 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         public async Task<Response<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
             //Mapping between request and student
-            var studentmapper=_mapper.Map<Student>(request);
+            var studentmapper = _mapper.Map<Student>(request);
             //add
-            var result=await _studentService.AddAsync(studentmapper);
+            var result = await _studentService.AddAsync(studentmapper);
             //check condition
             if (result.Equals("Exist"))
             {
