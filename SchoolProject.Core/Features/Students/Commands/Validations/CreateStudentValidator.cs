@@ -12,6 +12,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public CreateStudentValidator()
         {
             ApplyValidationsRules();
+            ApplyCustomValidationsRules();
         }
         #endregion
 
@@ -28,6 +29,11 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
                 .NotNull().WithMessage("{PropertyValue} Must Not Be Null")
                 .MaximumLength(00).WithMessage("{PropertyName} cannot exceed 10 characters");
 
+
+        }
+
+        public void ApplyCustomValidationsRules()
+        {
 
         }
         #endregion
