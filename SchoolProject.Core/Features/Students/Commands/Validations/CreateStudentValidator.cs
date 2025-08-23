@@ -1,18 +1,22 @@
 ﻿using FluentValidation;
 using SchoolProject.Core.Features.Students.Commands.Models;
+using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Students.Commands.Validations
 {
     public class CreateStudentValidator : AbstractValidator<CreateStudentCommand>
     {
+
         #region Fields
+        private readonly IStudentService _studentService;
         #endregion
 
         #region Constructors
-        public CreateStudentValidator()
+        public CreateStudentValidator(IStudentService studentService)
         {
             ApplyValidationsRules();
             ApplyCustomValidationsRules();
+            _studentService = studentService;
         }
         #endregion
 
@@ -34,7 +38,10 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
 
         public void ApplyCustomValidationsRules()
         {
-
+            RuleFor(x => x.Name)
+                .MustAsync(async (key, CancellationToken) =>
+                   !await _studentService.IsNameExist(key))
+                .WithMessage("Student with this name already exists");
         }
         #endregion
 
