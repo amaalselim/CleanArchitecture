@@ -21,6 +21,12 @@ namespace SchoolProject.Service.Implementations
             return "Success";
         }
 
+        public async Task<string> EditAsync(Student student)
+        {
+            await _studentRepository.UpdateAsync(student);
+            return "Success";
+        }
+
         public async Task<List<Student>> GetAllStudentsAsync()
         {
             return await _studentRepository.GetAllStudentsAsync();
