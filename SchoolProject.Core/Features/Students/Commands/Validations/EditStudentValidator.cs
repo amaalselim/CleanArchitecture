@@ -25,12 +25,12 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Name Must Not Be Empty")
                 .NotNull().WithMessage("Name Must Not Be Null")
-                .MaximumLength(00).WithMessage("Name cannot exceed 10 characters");
+                .MaximumLength(100).WithMessage("Name cannot exceed 100 characters");
 
             RuleFor(x => x.Address)
                 .NotEmpty().WithMessage("{PropertyName} Must Not Be Empty")
                 .NotNull().WithMessage("{PropertyValue} Must Not Be Null")
-                .MaximumLength(00).WithMessage("{PropertyName} cannot exceed 10 characters");
+                .MaximumLength(100).WithMessage("{PropertyName} cannot exceed 100 characters");
 
 
         }
@@ -38,8 +38,8 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public void ApplyCustomValidationsRules()
         {
             RuleFor(x => x.Name)
-                .MustAsync(async (key, CancellationToken) =>
-                   !await _studentService.IsNameExist(key))
+                .MustAsync(async (model, key, CancellationToken) =>
+                   !await _studentService.IsNameExistExcludeSelf(key, model.Id))
                 .WithMessage("Student with this name already exists");
         }
         #endregion
