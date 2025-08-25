@@ -52,7 +52,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
             //return response
             if (result.Equals("Success"))
             {
-                return Created<string>($"{studentmapper.StudID} Edit Successfully");
+                return Created<string>($"ID Number {studentmapper.StudID} Edit Successfully");
             }
             else return BadRequest<string>("Something went wrong, please try again later");
         }
