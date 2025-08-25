@@ -1,6 +1,4 @@
-﻿using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Students.Commands.Models;
 using SchoolProject.Core.Features.Students.Queries.Models;
@@ -11,7 +9,7 @@ namespace SchoolProject.API.Controllers
     [ApiController]
     public class StudentController : AppControllerBase
     {
-        
+
         [HttpGet("List")]
         public async Task<IActionResult> GetStudentList()
         {
@@ -27,6 +25,12 @@ namespace SchoolProject.API.Controllers
 
         [HttpPost("Create")]
         public async Task<IActionResult> Create([FromBody] CreateStudentCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
+        }
+        [HttpPut("Edit")]
+        public async Task<IActionResult> Edit([FromBody] EditStudentCommand command)
         {
             var response = await Mediator.Send(command);
             return NewResult(response);
