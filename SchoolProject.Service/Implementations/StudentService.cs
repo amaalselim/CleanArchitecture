@@ -44,5 +44,14 @@ namespace SchoolProject.Service.Implementations
             if (studentresult != null) return false;
             return true;
         }
+
+        public async Task<bool> IsNameExistExcludeSelf(string name, int id)
+        {
+            var studentresult = await _studentRepository.GetTableNoTracking()
+                .Where(x => x.Name.Equals(name) & !x.StudID.Equals(id))
+                .FirstOrDefaultAsync();
+            if (studentresult != null) return false;
+            return true;
+        }
     }
 }
