@@ -31,11 +31,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
             //add
             var result = await _studentService.AddAsync(studentmapper);
             //check condition
-            if (result.Equals("Exist"))
-            {
-                return UnProcessableEntity<string>("Student with this name already exists");
-            }
-            else if (result.Equals("Success"))
+            if (result.Equals("Success"))
             {
                 return Created<string>("Added Successfully");
             }
