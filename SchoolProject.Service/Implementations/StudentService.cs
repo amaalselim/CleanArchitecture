@@ -21,6 +21,24 @@ namespace SchoolProject.Service.Implementations
             return "Success";
         }
 
+        public async Task<string> DeleteAsync(int id)
+        {
+            var student = await _studentRepository.GetByIdAsync(id);
+            var trans = _studentRepository.BeginTransaction();
+            try
+            {
+                await _studentRepository.DeleteAsync(student);
+                await trans.CommitAsync();
+                return "Success";
+            }
+            catch
+            {
+                await trans.RollbackAsync();
+                return "Failed";
+            }
+
+        }
+
         public async Task<string> EditAsync(Student student)
         {
             await _studentRepository.UpdateAsync(student);
