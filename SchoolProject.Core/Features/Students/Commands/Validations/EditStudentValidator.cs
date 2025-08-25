@@ -39,7 +39,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         {
             RuleFor(x => x.Name)
                 .MustAsync(async (model, key, CancellationToken) =>
-                   !await _studentService.IsNameExistExcludeSelf(key, model.Id))
+                   await _studentService.IsNameExistExcludeSelf(key, model.Id))
                 .WithMessage("Student with this name already exists");
         }
         #endregion
