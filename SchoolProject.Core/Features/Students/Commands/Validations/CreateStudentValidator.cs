@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Features.Students.Commands.Models;
+using SchoolProject.Core.Resources;
 using SchoolProject.Service.Abstracts;
 
 namespace SchoolProject.Core.Features.Students.Commands.Validations
@@ -9,14 +11,17 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
 
         #region Fields
         private readonly IStudentService _studentService;
+
+        private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         #endregion
 
         #region Constructors
-        public CreateStudentValidator(IStudentService studentService)
+        public CreateStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
         {
+            _studentService = studentService;
+            _stringLocalizer = stringLocalizer;
             ApplyValidationsRules();
             ApplyCustomValidationsRules();
-            _studentService = studentService;
         }
         #endregion
 
@@ -24,7 +29,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public void ApplyValidationsRules()
         {
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Name Must Not Be Empty")
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                 .NotNull().WithMessage("Name Must Not Be Null")
                 .MaximumLength(100).WithMessage("Name cannot exceed 100 characters");
 

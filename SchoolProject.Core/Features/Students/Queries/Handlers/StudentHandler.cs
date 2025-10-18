@@ -22,7 +22,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
         #region Constructors
         public StudentHandler(IStudentService studentService,
                                               IMapper mapper,
-                                              IStringLocalizer<SharedResources> stringLocalizer)
+                                              IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
         {
             _studentService = studentService;
             _mapper = mapper;

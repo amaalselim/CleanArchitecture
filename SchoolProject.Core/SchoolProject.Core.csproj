@@ -21,26 +21,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Resources\SharedResourcesAr.Designer.cs">
+    <Compile Update="Resources\SharedResources.Ar.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>SharedResourcesAr.resx</DependentUpon>
+      <DependentUpon>SharedResources.Ar.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\SharedResourcesEn.Designer.cs">
+    <Compile Update="Resources\SharedResources.En.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>SharedResourcesEn.resx</DependentUpon>
+      <DependentUpon>SharedResources.En.resx</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Resources\SharedResourcesAr.resx">
+    <EmbeddedResource Update="Resources\SharedResources.Ar.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedResourcesAr.Designer.cs</LastGenOutput>
+      <LastGenOutput>SharedResources.Ar.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\SharedResourcesEn.resx">
+    <EmbeddedResource Update="Resources\SharedResources.En.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SharedResourcesEn.Designer.cs</LastGenOutput>
+      <LastGenOutput>SharedResources.En.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
