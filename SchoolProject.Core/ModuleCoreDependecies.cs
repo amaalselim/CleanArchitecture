@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SchoolProject.Core.Behaviors;
 using System.Reflection;
 
+
 namespace SchoolProject.Core
 {
     public static class ModuleCoreDependecies

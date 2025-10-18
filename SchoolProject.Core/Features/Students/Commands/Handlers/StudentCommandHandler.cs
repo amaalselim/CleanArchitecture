@@ -26,6 +26,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         }
         #endregion
 
+
         #region handle Functions
         public async Task<Response<string>> Handle(CreateStudentCommand request, CancellationToken cancellationToken)
         {
@@ -61,13 +62,11 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
 
         public async Task<Response<string>> Handle(DeleteStudentCommand request, CancellationToken cancellationToken)
         {
-            // Check if id exists or not
             var student = await _studentService.GetStudentByIdAsync(request.Id);
             if (student == null)
                 return NotFound<string>("Student Not Found");
-            //make delete
+
             var result = await _studentService.DeleteAsync(student.StudID);
-            //return response
             if (result.Equals("Success"))
             {
                 return Deleted<string>();

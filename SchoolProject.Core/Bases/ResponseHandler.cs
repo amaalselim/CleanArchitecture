@@ -11,7 +11,7 @@
         {
             return new Response<T>()
             {
-                StatusCode = System.Net.HttpStatusCode.OK,
+                StatusCode = System.Net.HttpStatusCode.NoContent,
                 Succeeded = true,
                 Message = "Deleted Successfully"
             };
@@ -23,7 +23,7 @@
                 Data = entity,
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Succeeded = true,
-                Message = "Added Successfully",
+                Message = "Success",
                 Meta = Meta
             };
         }

@@ -9,7 +9,6 @@ namespace SchoolProject.API.Controllers
     [ApiController]
     public class StudentController : AppControllerBase
     {
-
         [HttpGet("List")]
         public async Task<IActionResult> GetStudentList()
         {
